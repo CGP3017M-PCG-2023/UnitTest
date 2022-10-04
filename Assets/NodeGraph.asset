@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7919097413709332479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337ae63438602004d85d05fd308747af, type: 3}
+  m_Name: QuadNode
+  m_EditorClassIdentifier: 
+  children: []
+  parents: []
+  guid: 6aa38d994db33394fbc208c38c0f34f8
+  nodeGraphPosition: {x: 350, y: 0}
+  hasMultipleParents: 0
+  m_geometry:
+    points:
+    - position: {x: -1, y: 1, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    - position: {x: 1, y: 1, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    - position: {x: 1, y: -1, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    - position: {x: -1, y: -1, z: -0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    prims:
+    - points: 00000000010000000200000003000000
+      normal: {x: 0, y: 0, z: 0}
+      selected: 0
+  editplane:
+    point: {x: 0, y: 0, z: 0}
+    normal: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+    right: {x: 1, y: 0, z: 0}
+  width: 2
+  height: 2
+--- !u!114 &-4685044750211282074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52386ef29528d974a915b110b5c4a9af, type: 3}
+  m_Name: TriangleNode
+  m_EditorClassIdentifier: 
+  children: []
+  parents: []
+  guid: fb1e2992d47b0004191f66d3177bc3d9
+  nodeGraphPosition: {x: 0, y: 0}
+  hasMultipleParents: 0
+  m_geometry:
+    points:
+    - position: {x: 0, y: 2, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    - position: {x: -1.7320508, y: -1.0000002, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    - position: {x: 1.7320508, y: -1.0000002, z: 0}
+      normal: {x: 0, y: 1, z: 0}
+      uv1: {x: 0, y: 0}
+      uv2: {x: 0, y: 0}
+      col: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      selected: 0
+    prims:
+    - points: 000000000200000001000000
+      normal: {x: 0, y: 0, z: 0}
+      selected: 0
+  editplane:
+    point: {x: 0, y: 0, z: 0}
+    normal: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+    right: {x: 1, y: 0, z: 0}
+  radius: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45fbb3dc376c654d877f1ae223ddf7a, type: 3}
+  m_Name: NodeGraph
+  m_EditorClassIdentifier: 
+  outputNode: {fileID: -7919097413709332479}
+  nodes:
+  - {fileID: -4685044750211282074}
+  - {fileID: 3421966995057729839}
+  - {fileID: -7919097413709332479}
+--- !u!114 &3421966995057729839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547e4899fac27144af09bbb687cc1b0, type: 3}
+  m_Name: CubeNode
+  m_EditorClassIdentifier: 
+  children: []
+  parents: []
+  guid: cbda2e830d05acf4d90d7deaadef78b4
+  nodeGraphPosition: {x: 737.3929, y: 0.00002849102}
+  hasMultipleParents: 0
+  m_geometry:
+    points: []
+    prims: []
+  editplane:
+    point: {x: 0, y: 0, z: 0}
+    normal: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+    right: {x: 1, y: 0, z: 0}
+  size: 1

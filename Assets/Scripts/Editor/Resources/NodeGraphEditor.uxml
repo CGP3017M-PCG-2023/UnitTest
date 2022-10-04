@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="NodeGraphEditor.uss" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu display-tooltip-when-elided="true" text="Assets&#10;" />
+    </uie:Toolbar>
+    <MiniDini.Editor.Views.SplitView fixed-pane-initial-dimension="300">
+        <ui:VisualElement name="LeftPane">
+            <ui:Label text="Inspector" display-tooltip-when-elided="true" />
+            <ui:IMGUIContainer name="InspectorView" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPane">
+            <ui:TextField picking-mode="Ignore" label="Node Graph Name" text="filler text" binding-path="m_Name" readonly="true" name="NodeGraphName" focusable="false" />
+            <uie:PropertyField label="Output Node" binding-path="outputNode" style="flex-grow: 0; height: auto;" />
+            <MiniDini.Editor.Views.NodeGraphView focusable="true" />
+        </ui:VisualElement>
+    </MiniDini.Editor.Views.SplitView>
+</ui:UXML>
