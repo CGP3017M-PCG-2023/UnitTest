@@ -11,16 +11,15 @@ namespace MiniDini.Nodes
     public class GridNode : Node
     {
         [SerializeField]
-        protected ConstructionPlane editplane = new ConstructionPlane();
+        public ConstructionPlane editplane = new ConstructionPlane();
         [SerializeField]
-        protected float width = 10.0f;
+        public float width = 2.0f;
         [SerializeField]
-        protected float height = 10.0f;
+        public float height = 2.0f;
         [SerializeField]
-        protected uint rows = 1;
+        public uint rows = 3;
         [SerializeField]
-        protected uint columns = 1;
-
+        public uint columns = 3;
 
         #region Overrides of Node
 

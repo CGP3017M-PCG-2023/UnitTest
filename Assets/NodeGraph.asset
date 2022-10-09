@@ -101,6 +101,35 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
     right: {x: 1, y: 0, z: 0}
   radius: 2
+--- !u!114 &-3885306325307881693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24d74edefe7614458b86f86cb9f8268, type: 3}
+  m_Name: GridNode
+  m_EditorClassIdentifier: 
+  children: []
+  parents: []
+  guid: 8ded18df3433cfa4ca643de5ffb347d7
+  nodeGraphPosition: {x: -57, y: 264.99997}
+  hasMultipleParents: 0
+  m_geometry:
+    points: []
+    prims: []
+  editplane:
+    point: {x: 0, y: 0, z: 0}
+    normal: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+    right: {x: 1, y: 0, z: 0}
+  width: 2
+  height: 2
+  rows: 3
+  columns: 3
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +147,7 @@ MonoBehaviour:
   - {fileID: -4685044750211282074}
   - {fileID: 3421966995057729839}
   - {fileID: -7919097413709332479}
+  - {fileID: -3885306325307881693}
 --- !u!114 &3421966995057729839
 MonoBehaviour:
   m_ObjectHideFlags: 0
