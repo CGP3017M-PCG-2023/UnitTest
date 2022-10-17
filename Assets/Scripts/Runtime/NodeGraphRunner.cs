@@ -66,9 +66,9 @@ namespace MiniDini.Runner
                     pointslist.Add(p.position);
 				}
                 mesh.vertices = pointslist.ToArray();
-                foreach(Prim pr in geom.prims)
+                List<int> indexlist = new List<int>();
+                foreach (Prim pr in geom.prims)
 				{
-                    List<int> indexlist = new List<int>();
                     // triangle prims are simply added to the list of point indices for each tri
                     if (pr.points.Count == 3)
 					{
@@ -85,10 +85,10 @@ namespace MiniDini.Runner
                         indexlist.Add(pr.points[3]);
 
                     }
-                    mesh.triangles = indexlist.ToArray();
 				}
+                mesh.triangles = indexlist.ToArray();
 
-			}
+            }
 
         }
 
