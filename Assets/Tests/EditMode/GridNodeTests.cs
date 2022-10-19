@@ -160,11 +160,17 @@ public class GridNodeTests
 
             CalculatePrimInnerAngles(p, geom,ref innerangles);
 
-            Assert.True(
+            float testAngle = innerangles[0];
+            foreach (float angle in innerangles)
+            {
+                Assert.AreEqual(testAngle, angle, 0.001d);  //Tests all angles against each other and allows for float error
+            }
+
+            /*Assert.True(
                 innerangles[0] == innerangles[1] && 
                 innerangles[1] == innerangles[2] && 
                 innerangles[2] == innerangles[3] && 
-                innerangles[3] == innerangles[0], "AllAnglesAreEqual");
+                innerangles[3] == innerangles[0], "AllAnglesAreEqual");*/
         }
         
 
