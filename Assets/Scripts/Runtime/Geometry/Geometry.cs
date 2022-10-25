@@ -43,6 +43,13 @@ namespace MiniDini
 			return mypoints;
 		}
 
+		public void Clone(Geometry other)
+		{
+			Empty();
+			points.AddRange(other.points);
+			prims.AddRange(other.prims);
+		}
+
 	}
 
 }
