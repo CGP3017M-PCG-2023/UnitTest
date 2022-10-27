@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24d74edefe7614458b86f86cb9f8268, type: 3}
   m_Name: GridNode
   m_EditorClassIdentifier: 
-  children: []
+  children:
+  - {fileID: 4915442188883749752}
   parents: []
   guid: 8ded18df3433cfa4ca643de5ffb347d7
   nodeGraphPosition: {x: -57, y: 264.99997}
@@ -142,12 +143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45fbb3dc376c654d877f1ae223ddf7a, type: 3}
   m_Name: NodeGraph
   m_EditorClassIdentifier: 
-  outputNode: {fileID: -7919097413709332479}
+  outputNode: {fileID: 4915442188883749752}
   nodes:
   - {fileID: -4685044750211282074}
   - {fileID: 3421966995057729839}
   - {fileID: -7919097413709332479}
   - {fileID: -3885306325307881693}
+  - {fileID: 4915442188883749752}
 --- !u!114 &3421966995057729839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +176,28 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
     right: {x: 1, y: 0, z: 0}
   size: 1
+--- !u!114 &4915442188883749752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612aaa33df50474898d7c20f3235d90, type: 3}
+  m_Name: SelectNode
+  m_EditorClassIdentifier: 
+  children: []
+  parents:
+  - {fileID: -3885306325307881693}
+  guid: 461e7de9ef78d9d4aa8cd708e99d6f81
+  nodeGraphPosition: {x: -56.799988, y: 529.60004}
+  hasMultipleParents: 0
+  m_geometry:
+    points: []
+    prims: []
+  point: {x: 0, y: 0, z: 0}
+  radius: 1
+  selmode: 0
+  seltype: 2

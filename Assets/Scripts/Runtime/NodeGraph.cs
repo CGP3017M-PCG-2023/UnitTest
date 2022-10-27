@@ -82,6 +82,8 @@ namespace MiniDini
             if (!nodes.Contains(parent)) return;
 
             nodes[nodes.IndexOf(parent)].AddChild(child);
+            // pac - add parent so we can query from children to do things like merge
+            child.AddParent(nodes[nodes.IndexOf(parent)]);
 
             if (nodes.Contains(child)) return;
 
@@ -98,6 +100,7 @@ namespace MiniDini
             if (!nodes.Contains(parent)) return;
 
             nodes[nodes.IndexOf(parent)].RemoveChild(child);
+            child.RemoveParent(nodes[nodes.IndexOf(parent)]);
         }
 
         /// <summary>
