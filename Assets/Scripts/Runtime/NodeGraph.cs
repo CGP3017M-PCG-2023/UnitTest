@@ -42,11 +42,12 @@ namespace MiniDini
         /// Create a new Node and add it to the nodes.
         /// </summary>
         /// <param name="type">The Type of Node to create.</param>
-        public Node CreateNode(System.Type type)
+        public Node CreateNode(System.Type type, Vector2 initalPosition)
         {
             Node node = CreateInstance(type) as Node;
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
+            node.nodeGraphPosition = initalPosition;
 
             nodes.Add(node);
 
