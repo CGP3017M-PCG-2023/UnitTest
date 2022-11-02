@@ -29,16 +29,16 @@ public class SelectNodeTests
     }
 
     static int GetSelectedPointCount(Geometry geom)
-	{
+    {
         int count = 0;
 
-        foreach(Point p in geom.points)
-		{
+        foreach (Point p in geom.points)
+        {
             if (p.selected) count++;
-		}
+        }
 
         return count;
-	}
+    }
 
     static int GetSelectedPrimCount(Geometry geom)
     {
@@ -72,7 +72,7 @@ public class SelectNodeTests
 
 
         Assert.NotNull(geom, "Geometry must not be null");
-        Assert.True(originalgeom.points.Count == geom.points.Count,"Geometry from select must have same input point count");
+        Assert.True(originalgeom.points.Count == geom.points.Count, "Geometry from select must have same input point count");
         Assert.True(originalgeom.prims.Count == geom.prims.Count, "Geometry from select must have same input prims count");
     }
 
@@ -87,9 +87,9 @@ public class SelectNodeTests
         MakeNodesAndGeometry();
         // basically select only a single point by setting selection radius small
         selnode.radius = 0.1f;
-		{
+        {
             // move the selection to the top left
-            selnode.point = new Vector3(-1, 1, 0);
+            selnode.point = gridnode.m_geometry.points[0].position; //Makes sure point is always at the first point in the grid
             selnode.seltype = SelectNode.SelectionType.PointsOnly;
             selnode.selmode = SelectNode.SelectionMode.Inside;
             Geometry geom = selnode.GetGeometry();
@@ -99,7 +99,7 @@ public class SelectNodeTests
         }
         {
             // move the selection to the top right
-            selnode.point = new Vector3(1, 1, 0);
+            selnode.point = gridnode.m_geometry.points[0].position; //Makes sure point is always at the first point in the grid
             selnode.seltype = SelectNode.SelectionType.PointsOnly;
             selnode.selmode = SelectNode.SelectionMode.Inside;
             Geometry geom = selnode.GetGeometry();
@@ -109,7 +109,7 @@ public class SelectNodeTests
         }
         {
             // move the selection to the bottom right
-            selnode.point = new Vector3(-1, 1, 0);
+            selnode.point = gridnode.m_geometry.points[0].position; //Makes sure point is always at the first point in the grid
             selnode.seltype = SelectNode.SelectionType.PointsOnly;
             selnode.selmode = SelectNode.SelectionMode.Inside;
             Geometry geom = selnode.GetGeometry();
@@ -119,7 +119,7 @@ public class SelectNodeTests
         }
         {
             // move the selection to the bottom left
-            selnode.point = new Vector3(-1, -1, 0);
+            selnode.point = gridnode.m_geometry.points[0].position; //Makes sure point is always at the first point in the grid
             selnode.seltype = SelectNode.SelectionType.PointsOnly;
             selnode.selmode = SelectNode.SelectionMode.Inside;
             Geometry geom = selnode.GetGeometry();
@@ -143,8 +143,8 @@ public class SelectNodeTests
         // basically select everything but the top left point (small radius selects one point)
         selnode.radius = 0.1f;
         {
-            // move the selection to the top left
-            selnode.point = new Vector3(-1, 1, 0);
+            // move the selection to the top left 
+            selnode.point = new Vector3(0, 0, 0); //Point starts at origin
             selnode.seltype = SelectNode.SelectionType.PointsOnly;
             selnode.selmode = SelectNode.SelectionMode.Outside;
             Geometry geom = selnode.GetGeometry();
@@ -166,7 +166,7 @@ public class SelectNodeTests
         selnode.radius = 0.1f;
         {
             // move the selection to the top left
-            selnode.point = new Vector3(-1, 1, 0);
+            selnode.point = gridnode.m_geometry.points[0].position; //Makes sure point is always at the first point in the grid
             selnode.seltype = SelectNode.SelectionType.PointsAndPrims;
             selnode.selmode = SelectNode.SelectionMode.Inside;
             Geometry geom = selnode.GetGeometry();
@@ -190,7 +190,7 @@ public class SelectNodeTests
         selnode.radius = 0.1f;
         {
             // move the selection to the top left
-            selnode.point = new Vector3(-1, 1, 0);
+            selnode.point = new Vector3(0, 0, 0); //Point starts at origin
             selnode.seltype = SelectNode.SelectionType.PrimsOnly;
             selnode.selmode = SelectNode.SelectionMode.Outside;
             Geometry geom = selnode.GetGeometry();
