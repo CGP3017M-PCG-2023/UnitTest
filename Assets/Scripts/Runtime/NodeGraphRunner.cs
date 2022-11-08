@@ -29,7 +29,7 @@ namespace MiniDini.Runner
         private void Start()
         {
             if (!graph) return;
-            graph = graph.Clone();
+            //graph = graph.Clone();
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace MiniDini.Runner
                     }
                     else
                     {
-                        pointcolourslist.Add(Color.blue);
+                        pointcolourslist.Add(p.col);
                     }
                 }
                 mesh.vertices = pointslist.ToArray();

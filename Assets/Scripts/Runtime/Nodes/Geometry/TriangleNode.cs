@@ -15,6 +15,8 @@ namespace MiniDini.Nodes
         protected ConstructionPlane editplane = new ConstructionPlane();
         [SerializeField]
         protected float radius = 2.0f;
+        [SerializeField]
+        public Color colour = Color.green;
 
 
         #region Overrides of Node

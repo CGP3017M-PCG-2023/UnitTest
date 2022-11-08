@@ -16,6 +16,35 @@ namespace MiniDini
         public List<int> points = new List<int>();
         public Vector3 normal;
         public bool selected = false;
+
+
+        // default constructor
+        public Prim()
+		{
+            // does nothing
+            points.Clear();
+        }
+
+        // copy constructor
+        public Prim(Prim p)
+		{
+            points.Clear();
+            normal = p.normal;
+            points = p.points;
+            selected = p.selected;
+        }
+
+        public Prim Clone()
+        {
+            points.Clear();
+            Prim p = new Prim();
+            p.normal = normal;
+            p.points = points;
+            p.selected = selected;
+            return p;
+        }
     }
+
+
 
 }

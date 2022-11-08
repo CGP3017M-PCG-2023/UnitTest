@@ -93,12 +93,20 @@ namespace MiniDini.Nodes
 		}
 
 		/// <summary>
-		/// Remove a Child from the Node.
+		/// Remove a parent from the Node.
 		/// </summary>
 		/// <param name="parent">The parent to remove.</param>
 		public virtual void RemoveParent(Node parent) 
 		{
 			parents.Remove(parent);
+		}
+
+		/// <summary>
+		/// Remove all parent(s) from the Node.
+		/// </summary>
+		public virtual void RemoveAllParents()
+		{
+			parents.Clear();
 		}
 
 

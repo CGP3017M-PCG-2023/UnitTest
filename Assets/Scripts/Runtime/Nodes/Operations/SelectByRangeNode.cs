@@ -8,41 +8,39 @@ namespace MiniDini.Nodes
     /// <see cref="Node"/> that has a list of children.
     /// </summary>
     [System.Serializable]
-    public class SelectNode : Node
+    public class SelectByRangeNode : Node
     {
-        public enum SelectionMode
-		{
-            Inside,
-            Outside
-		}
-
         public enum SelectionType
-		{
+        {
             PointsOnly,
-            PointsAndPrims,
             PrimsOnly
-		}
+        }
 
 
         #region Overrides of Node
 
-        // the idea here, is that we can select points within a sphere or outside it
-        // we can also select any prim if a point of that prim is within the sphere (or outside if we set that as the mode)
+        /// the idea here, is that we can select points or prims as part of a pattern
+        /// for instance, we can select based on step size (remember stride?) so we start at range_start
+        /// end at range_end and select points or prims based on the step size (so we skip step points/prims)
+        /// It allows us to delete every Nth point/prim for instance!
 
         [SerializeField]
-        public Vector3 point = Vector3.zero;
+        [Range(0, 600)]
+        public int range_start = 0;
         [SerializeField]
-        public float radius = 1.0f;
+        [Range(0, 600)]
+        public int range_end = 0;
+        [SerializeField]
+        [Range(1, 100)]
+        public int step = 1;
 
-        [SerializeField]
-        public SelectionMode selmode = SelectionMode.Inside;
         [SerializeField]
         public SelectionType seltype = SelectionType.PrimsOnly;
 
 
 
 
-        public override string GetDescription() { return "Select incoming geometry"; }
+        public override string GetDescription() { return "Select incoming geometry within range of start/end with step size"; }
 
         /// <summary>
         /// Get the geometry for this Node.
@@ -52,27 +50,28 @@ namespace MiniDini.Nodes
         {
             if (m_geometry == null)
             {
-                Debug.Log("SelectNode:Geometry was null in GetGeometry, so creating");
+                Debug.Log("SelectByRangeNode:Geometry was null in GetGeometry, so creating");
 
                 // create new geometry container if we don't have one from parent just so we return something
-                if(m_geometry == null)
+                if (m_geometry == null)
                     m_geometry = new Geometry();
             }
 
             m_geometry.Empty();
+
+            //Debug.Log(point.ToString());
 
             // here is where we construct the geometry 
             List<Node> parents = GetParents();
 
             if (parents.Count > 0)
             {
-                Geometry parent_geometry = parents[0].GetGeometry();
+ 				Geometry parent_geometry = parents[0].GetGeometry();
                 // make a copy of first parents geometry (we should only have one parent!)
                 m_geometry.Copy(parent_geometry);
-				// todo: write the selection code below...
 
-			}
-
+                // do some simple maths to select points/prims here!
+            }
 
             return m_geometry;
         }

@@ -106,9 +106,13 @@ namespace MiniDini.Editor.Views
                 case MiniDini.Nodes.QuadNode:
                     // the above don't have ANY input ports
                     break;
-
+                case MiniDini.Nodes.CopyToPointsNode:
+                    // merge and copy to points nodes can have multiple geometries input to them
+                    input = InstantiatePort(Orientation.Vertical, Direction.Input,
+                                            Port.Capacity.Multi, typeof(Node));
+                    break;
                 case MiniDini.Nodes.MergeNode:
-                    // merge node can have multiple geometries input to it
+                    // merge and copy to points nodes can have multiple geometries input to them
                     input = InstantiatePort(Orientation.Vertical, Direction.Input,
                                             Port.Capacity.Multi, typeof(Node));
                     break;

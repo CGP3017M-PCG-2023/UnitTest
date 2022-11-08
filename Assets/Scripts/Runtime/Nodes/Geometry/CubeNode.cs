@@ -17,6 +17,8 @@ namespace MiniDini.Nodes
         protected ConstructionPlane editplane = new ConstructionPlane();
         [SerializeField]
         protected float size = 1.0f;
+        [SerializeField]
+        public Color colour = Color.red;
 
         public override string GetDescription() { return "A single cube"; }
 

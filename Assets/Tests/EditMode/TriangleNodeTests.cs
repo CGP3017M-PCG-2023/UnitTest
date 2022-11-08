@@ -37,6 +37,7 @@ public class TriangleNodeTests
         MakeNodeAndGeometry();
 
         Assert.NotNull(geom, "Geometry must not be null");
+        Assert.True(geom.points.Count > 0, "Triangle Geometry shouldn't be empty");
     }
 
     [Test]

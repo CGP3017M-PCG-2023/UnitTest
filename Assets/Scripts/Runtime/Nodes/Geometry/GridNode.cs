@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace MiniDini.Nodes
@@ -13,13 +14,20 @@ namespace MiniDini.Nodes
         [SerializeField]
         public ConstructionPlane editplane = new ConstructionPlane();
         [SerializeField]
+        [Range(0.1f, 600.0f)]
         public float width = 2.0f;
         [SerializeField]
+        [Range(0.1f, 600.0f)]
         public float height = 2.0f;
         [SerializeField]
+        [Range(1, 600)]
         public uint rows = 3;
         [SerializeField]
+        [Range(1, 600)]
         public uint columns = 3;
+        [SerializeField]
+        public Color colour = Color.blue;
+
 
         #region Overrides of Node
 

@@ -100,7 +100,7 @@ public class CubeNodeTests
         MakeNodeAndGeometry();
 
         Assert.NotNull(geom.points, "Geometry.points must not be null");
-        
+        Assert.AreEqual(6, geom.prims.Count);
         List<Vector3> points = geom.getPointList();
         foreach(Prim prm in geom.prims)
 		{
@@ -131,7 +131,7 @@ public class CubeNodeTests
 
         Assert.NotNull(geom.points, "Geometry.points must not be null");
         Assert.NotNull(geom.prims, "Geometry.prims must not be null");
-
+        Assert.AreEqual(6, geom.prims.Count);
         List<Vector3> points = geom.getPointList();
 
         foreach (Prim prm in geom.prims)
@@ -181,7 +181,7 @@ public class CubeNodeTests
 
         Assert.NotNull(geom.points, "Geometry.points must not be null");
         Assert.NotNull(geom.prims, "Geometry.prims must not be null");
-
+        Assert.AreEqual(6, geom.prims.Count);
         List<Vector3> points = geom.getPointList();
 
         foreach (Prim prm in geom.prims)

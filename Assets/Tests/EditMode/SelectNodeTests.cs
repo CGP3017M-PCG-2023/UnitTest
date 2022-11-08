@@ -72,6 +72,8 @@ public class SelectNodeTests
 
 
         Assert.NotNull(geom, "Geometry must not be null");
+        Assert.NotNull(originalgeom, "Input Geometry must not be null");
+        Assert.True(originalgeom.points.Count > 0, "Input Geometry must not be empty");
         Assert.True(originalgeom.points.Count == geom.points.Count,"Geometry from select must have same input point count");
         Assert.True(originalgeom.prims.Count == geom.prims.Count, "Geometry from select must have same input prims count");
     }
