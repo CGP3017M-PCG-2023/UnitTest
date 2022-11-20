@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,21 @@ namespace MiniDini
 			p.col = col;
 			p.selected = selected;
 			return p;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return obj is Point point && position.Equals(point.position)
+									&& normal.Equals(point.normal)
+									&& uv1.Equals(point.uv1)
+									&& uv2.Equals(point.uv2)
+									&& col.Equals(point.col)
+									&& selected == point.selected;
+		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(position, normal, uv1, uv2, col, selected);
 		}
 	}
 
