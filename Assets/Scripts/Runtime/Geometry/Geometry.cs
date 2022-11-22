@@ -18,15 +18,13 @@ namespace MiniDini
 
 		public Geometry()
 		{
-			points.Clear();
-			prims.Clear();
+			Empty();
 		}
 
 		// copy constructor (theoretically makes a deep copy!)
 		public Geometry(Geometry other)
 		{
-			points.Clear();
-			prims.Clear();
+			Empty();
 
 			Merge(other);
 		}
@@ -34,6 +32,7 @@ namespace MiniDini
 		// merge other geometry into this one without clearing
 		public void Merge(Geometry other)
 		{
+			var initial_point_count = points.Count;
 			foreach (Point p in other.points)
 			{
 				Point pn = new Point(p);
@@ -42,6 +41,11 @@ namespace MiniDini
 			foreach (Prim pr in other.prims)
 			{
 				Prim prn = new Prim(pr);
+				for (int i = 0; i < prn.points.Count; i++)
+				{
+					// offset the point indices so they're not pointing to previously existing points
+					prn.points[i] += initial_point_count;
+				}
 				prims.Add(prn);
 			}
 		}
