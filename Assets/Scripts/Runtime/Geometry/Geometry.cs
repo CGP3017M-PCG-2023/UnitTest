@@ -28,12 +28,17 @@ namespace MiniDini
 			points.Clear();
 			prims.Clear();
 
+			Merge(other);
+		}
+
+		// merge other geometry into this one without clearing
+		public void Merge(Geometry other)
+		{
 			foreach (Point p in other.points)
 			{
 				Point pn = new Point(p);
 				points.Add(pn);
 			}
-			//points.AddRange(other.points);
 			foreach (Prim pr in other.prims)
 			{
 				Prim prn = new Prim(pr);
@@ -76,18 +81,16 @@ namespace MiniDini
 		{
 			Geometry copy = new Geometry(other);
 			Empty();
-			foreach(Point p in copy.points)
+			Merge(copy);
+		}
+
+		// translate all points in the geometry by the given vector
+		public void Translate(Vector3 offset)
+		{
+			foreach (Point p in points)
 			{
-				Point pn = new Point(p);
-				points.Add(pn);
+				p.position += offset;
 			}
-			//points.AddRange(other.points);
-			foreach(Prim pr in copy.prims)
-			{
-				Prim prn = new Prim(pr);
-				prims.Add(prn);
-			}
-			//prims.AddRange(other.prims);
 		}
 		
 		// for debugging
