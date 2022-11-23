@@ -178,11 +178,12 @@ namespace MiniDini.Editor.Views
         /// Create a new <see cref="Node"/> with a Node View.
         /// </summary>
         /// <param name="type">The Type of Node to create.</param>
-        private void CreateNode(Type type)
+        /// <param name="initialPosition">The initial position of the Node on the graph when created.</param>
+        private void CreateNode(Type type, Vector2 initialPosition)
         {
             if (!m_graph) return;
 
-            Node node = m_graph.CreateNode(type);
+            Node node = m_graph.CreateNode(type, initialPosition);
             CreateNodeView(node);
             Undo.RecordObject(m_graph, "Node Graph (Create Node)");
 
@@ -231,12 +232,16 @@ namespace MiniDini.Editor.Views
         /// <param name="evt">The (<a href="https://docs.unity3d.com/2021.3/Documentation/ScriptReference/UIElements.ContextualMenuPopulateEvent.html" rel="external">UnityEngine.UIElements.ContextualMenuPopulateEvent</a>) event holding the menu to populate.</param>
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+            // View transform is positioned and scaled when the user drags or zooms the grid.
+            // So Convert the local (screen) mouse position to the entire graphs (world) position.
+            Vector3 mousePosition = viewTransform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
+
             TypeCache.TypeCollection types = TypeCache.GetTypesDerivedFrom<Node>();
             foreach (Type type in types)
             {
                 if (type.IsAbstract) continue;
                 evt.menu.AppendAction($"{type.BaseType.Name}/{type.Name}",
-                                      _ => CreateNode(type));
+                                      _ => CreateNode(type, mousePosition));
             }
 
             base.BuildContextualMenu(evt);
