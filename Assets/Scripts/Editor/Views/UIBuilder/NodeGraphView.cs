@@ -232,7 +232,10 @@ namespace MiniDini.Editor.Views
         /// <param name="evt">The (<a href="https://docs.unity3d.com/2021.3/Documentation/ScriptReference/UIElements.ContextualMenuPopulateEvent.html" rel="external">UnityEngine.UIElements.ContextualMenuPopulateEvent</a>) event holding the menu to populate.</param>
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            Vector2 mousePosition = evt.localMousePosition;
+            // View transform is positioned and scaled when the user drags or zooms the grid.
+            // So Convert the local (screen) mouse position to the entire graphs (world) position.
+            Vector3 mousePosition = viewTransform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
+
             TypeCache.TypeCollection types = TypeCache.GetTypesDerivedFrom<Node>();
             foreach (Type type in types)
             {
