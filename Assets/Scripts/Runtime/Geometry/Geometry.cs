@@ -88,12 +88,30 @@ namespace MiniDini
 			Merge(copy);
 		}
 
+		// roate all points in the geometry by the given quaternion
+		public void Rotate(Vector3 rotation)
+		{
+			foreach (Point p in points)
+			{
+				p.position = Quaternion.Euler(rotation) * p.position;
+			}
+		}
+
 		// translate all points in the geometry by the given vector
 		public void Translate(Vector3 offset)
 		{
 			foreach (Point p in points)
 			{
 				p.position += offset;
+			}
+		}
+
+		// scale all points in the geometry by the given quaternion
+		public void Scale(Vector3 scale)
+		{
+			foreach (Point p in points)
+			{
+				p.position = Vector3.Scale(p.position, scale);
 			}
 		}
 		
