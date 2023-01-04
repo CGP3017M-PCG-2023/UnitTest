@@ -6,7 +6,13 @@ using UnityEngine;
 namespace MiniDini.Nodes
 {
     /// <summary>
-    /// <see cref="Node"/> that has a list of children.
+    /// <see cref="Node"/>
+    /// This is a grid of quads with points' z values offset by a noise value.
+    /// This is a good way to make a heightmap, or a terrain.
+    /// It can also be fed into a CopyToPoints node to randomise the position of objects.
+    /// The noise value is based on the x and y coordinates of the grid.
+    /// It is generated using the Perlin noise function.
+    /// The noise value is scaled by the frequency and strength fields.
     /// </summary>
     [System.Serializable]
     public class NoiseGridNode : GridNode
