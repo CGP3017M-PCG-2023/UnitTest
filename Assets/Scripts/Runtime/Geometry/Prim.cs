@@ -30,7 +30,7 @@ namespace MiniDini
 		{
             points.Clear();
             normal = p.normal;
-            points = p.points;
+            points = new List<int>(p.points);
             selected = p.selected;
         }
 
@@ -39,12 +39,10 @@ namespace MiniDini
             points.Clear();
             Prim p = new Prim();
             p.normal = normal;
-            p.points = points;
+            p.points = new List<int>(points);
             p.selected = selected;
             return p;
         }
     }
-
-
 
 }

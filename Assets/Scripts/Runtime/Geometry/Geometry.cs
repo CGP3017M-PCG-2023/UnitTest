@@ -18,25 +18,34 @@ namespace MiniDini
 
 		public Geometry()
 		{
-			points.Clear();
-			prims.Clear();
+			Empty();
 		}
 
 		// copy constructor (theoretically makes a deep copy!)
 		public Geometry(Geometry other)
 		{
-			points.Clear();
-			prims.Clear();
+			Empty();
 
+			Merge(other);
+		}
+
+		// merge other geometry into this one without clearing
+		public void Merge(Geometry other)
+		{
+			var initial_point_count = points.Count;
 			foreach (Point p in other.points)
 			{
 				Point pn = new Point(p);
 				points.Add(pn);
 			}
-			//points.AddRange(other.points);
 			foreach (Prim pr in other.prims)
 			{
 				Prim prn = new Prim(pr);
+				for (int i = 0; i < prn.points.Count; i++)
+				{
+					// offset the point indices so they're not pointing to previously existing points
+					prn.points[i] += initial_point_count;
+				}
 				prims.Add(prn);
 			}
 		}
@@ -76,18 +85,34 @@ namespace MiniDini
 		{
 			Geometry copy = new Geometry(other);
 			Empty();
-			foreach(Point p in copy.points)
+			Merge(copy);
+		}
+
+		// roate all points in the geometry by the given quaternion
+		public void Rotate(Vector3 rotation)
+		{
+			foreach (Point p in points)
 			{
-				Point pn = new Point(p);
-				points.Add(pn);
+				p.position = Quaternion.Euler(rotation) * p.position;
 			}
-			//points.AddRange(other.points);
-			foreach(Prim pr in copy.prims)
+		}
+
+		// translate all points in the geometry by the given vector
+		public void Translate(Vector3 offset)
+		{
+			foreach (Point p in points)
 			{
-				Prim prn = new Prim(pr);
-				prims.Add(prn);
+				p.position += offset;
 			}
-			//prims.AddRange(other.prims);
+		}
+
+		// scale all points in the geometry by the given quaternion
+		public void Scale(Vector3 scale)
+		{
+			foreach (Point p in points)
+			{
+				p.position = Vector3.Scale(p.position, scale);
+			}
 		}
 		
 		// for debugging
